@@ -64,4 +64,25 @@ public class UserServiceTest {
 
         assertEquals(2, service.getAllUsers().size());
     }
+
+    @Test
+    public void shouldChangeUserEmail() {
+        User user = new User("user1", "password1", "old@example.com");
+        UserRepository repository = new UserRepository(List.of(user));
+        UserService service = new UserService(repository);
+
+        assertTrue(service.changeUserEmail("user1", "new@example.com"));
+        assertEquals(user, repository.getUserByEmail("new@example.com"));
+        assertNull(repository.getUserByEmail("old@example.com"));
+    }
+
+    @Test
+    public void shouldNotChangeToDuplicateEmail() {
+        User user1 = new User("user1", "password1", "user1@example.com");
+        User user2 = new User("user2", "password2", "user2@example.com");
+        UserRepository repository = new UserRepository(List.of(user1, user2));
+        UserService service = new UserService(repository);
+
+        assertFalse(service.changeUserEmail("user1", "user2@example.com"));
+    }
 }

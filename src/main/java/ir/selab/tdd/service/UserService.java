@@ -40,7 +40,6 @@ public class UserService {
     }
 
     public List<User> getAllUsers() {
-        // TODO: implement
         return repository.getAllUsers();
     }
 
