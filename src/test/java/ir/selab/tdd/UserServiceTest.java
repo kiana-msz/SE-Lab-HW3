@@ -54,4 +54,14 @@ public class UserServiceTest {
         boolean login = userService.loginWithUsername("ahmad", "abcd");
         assertFalse(login);
     }
+
+    @Test
+    public void shouldReturnAllUsers() {
+        User user1 = new User("user1", "password1", "user1@example.com");
+        User user2 = new User("user2", "password2", "user2@example.com");
+        UserRepository repository = new UserRepository(List.of(user1, user2));
+        UserService service = new UserService(repository);
+
+        assertEquals(2, service.getAllUsers().size());
+    }
 }
