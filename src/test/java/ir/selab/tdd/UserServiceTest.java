@@ -85,4 +85,42 @@ public class UserServiceTest {
 
         assertFalse(service.changeUserEmail("user1", "user2@example.com"));
     }
+
+    @Test
+    public void shouldRegisterUserWithEmailSuccessfully() {
+        String username = "newUser";
+        String password = "password123";
+        String email = "newuser@example.com";
+
+        boolean result = userService.registerUser(username, password, email);
+
+        assertTrue(result);
+        assertEquals(4, userService.getAllUsers().size());
+        assertNotNull(userService.getAllUsers().stream()
+                .filter(u -> email.equals(u.getEmail()))
+                .findFirst()
+                .orElse(null));
+    }
+
+    @Test
+    public void shouldNotRegisterUserWithDuplicateEmail() {
+        String username = "user1";
+        String password = "password1";
+        String email = "admin@example.com"; // Duplicate email
+
+        boolean result = userService.registerUser(username, password, email);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void shouldNotRegisterUserWithDuplicateUsername() {
+        String username = "admin"; // Duplicate username
+        String password = "password1";
+        String email = "unique@example.com";
+
+        boolean result = userService.registerUser(username, password, email);
+
+        assertFalse(result);
+    }
 }
