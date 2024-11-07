@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cf55fb9-a5e0-4169-9d02-0b0a11ccff2c" name="Changes" comment="Implement get all users">
+    <list default="true" id="7cf55fb9-a5e0-4169-9d02-0b0a11ccff2c" name="Changes" comment="Test changeUserEmail">
       <change beforePath="$PROJECT_DIR$/src/main/java/ir/selab/tdd/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/selab/tdd/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ir/selab/tdd/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ir/selab/tdd/UserServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +109,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730969415143</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Test changeUserEmail">
+      <option name="closed" value="true" />
+      <created>1730969517523</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1730969517523</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -129,6 +136,7 @@
     <MESSAGE value="Edit added files" />
     <MESSAGE value="Test get all users" />
     <MESSAGE value="Implement get all users" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement get all users" />
+    <MESSAGE value="Test changeUserEmail" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test changeUserEmail" />
   </component>
 </project>

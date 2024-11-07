@@ -44,8 +44,13 @@ public class UserService {
     }
 
     public boolean changeUserEmail(String username, String newEmail) {
-        // TODO: implement (if user exists and user's email is valid, then change email)
-        // TODO: after changing user's email, user must be able to login with new email.
-        return false;
+        User user = repository.getUserByUsername(username);
+        if (user == null || (newEmail != null && repository.getUserByEmail(newEmail) != null)) {
+            return false;
+        }
+        repository.removeUser(user.getUsername());
+        user.setEmail(newEmail);
+        repository.addUser(user);
+        return true;
     }
 }
