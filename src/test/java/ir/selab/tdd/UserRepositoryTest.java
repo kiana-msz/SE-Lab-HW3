@@ -63,7 +63,7 @@ public class UserRepositoryTest {
     }
 
     @Test
-    public void shouldPopulateUsersByEmail() { // TODO #1
+    public void shouldPopulateUsersByEmail() {
         User user1 = new User("user1", "password1", "user1@example.com");
         User user2 = new User("user2", "password2", "user2@example.com");
         UserRepository repository = new UserRepository(List.of(user1, user2));

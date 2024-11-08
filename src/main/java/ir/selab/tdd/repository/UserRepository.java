@@ -18,7 +18,9 @@ public class UserRepository {
         }));
 
         // TODO: implement (Some users may not have email!)
-        this.usersByEmail = new HashMap<>();
+        this.usersByEmail = users.stream()
+                .filter(u -> u.getEmail() != null)
+                .collect(Collectors.toMap(User::getEmail, u -> u));
     }
 
     public User getUserByUsername(String username) {
