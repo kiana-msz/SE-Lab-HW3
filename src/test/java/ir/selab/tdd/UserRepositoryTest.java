@@ -61,4 +61,14 @@ public class UserRepositoryTest {
         // Then
         assertEquals(oldUserCount + 1, repository.getUserCount());
     }
+
+    @Test
+    public void shouldPopulateUsersByEmail() { // TODO #1
+        User user1 = new User("user1", "password1", "user1@example.com");
+        User user2 = new User("user2", "password2", "user2@example.com");
+        UserRepository repository = new UserRepository(List.of(user1, user2));
+
+        assertEquals(user1, repository.getUserByEmail("user1@example.com"));
+        assertEquals(user2, repository.getUserByEmail("user2@example.com"));
+    }
 }
