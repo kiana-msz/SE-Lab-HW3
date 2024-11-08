@@ -56,6 +56,17 @@ public class UserServiceTest {
     }
 
     @Test
+    public void shouldLoginWithEmail() {
+        User user = new User("user1", "password1", "user1@example.com");
+        UserRepository repository = new UserRepository(List.of(user));
+        UserService service = new UserService(repository);
+
+        assertTrue(service.loginWithEmail("user1@example.com", "password1"));
+        assertFalse(service.loginWithEmail("user1@example.com", "wrongpassword"));
+        assertFalse(service.loginWithEmail("nonexistent@example.com", "password1"));
+    }
+
+    @Test
     public void shouldReturnAllUsers() {
         User user1 = new User("user1", "password1", "user1@example.com");
         User user2 = new User("user2", "password2", "user2@example.com");
