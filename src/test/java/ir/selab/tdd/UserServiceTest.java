@@ -67,6 +67,16 @@ public class UserServiceTest {
     }
 
     @Test
+    public void shouldRemoveUserByUsername() { 
+        User user = new User("user1", "password1", "user1@example.com");
+        UserRepository repository = new UserRepository(List.of(user));
+        UserService service = new UserService(repository);
+
+        assertTrue(service.removeUser("user1"));
+        assertNull(repository.getUserByUsername("user1"));
+    }
+
+    @Test
     public void shouldReturnAllUsers() {
         User user1 = new User("user1", "password1", "user1@example.com");
         User user2 = new User("user2", "password2", "user2@example.com");
