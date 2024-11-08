@@ -96,4 +96,19 @@ public class UserRepositoryTest {
         assertTrue(repository.addUser(user1));
         assertFalse(repository.addUser(user2));
     }
+
+    @Test
+    public void shouldRemoveUserByUsername() { //TODO #4
+        User user = new User("user1", "password1", "user1@example.com");
+        UserRepository repository = new UserRepository(List.of(user));
+
+        assertTrue(repository.removeUser("user1"));
+        assertNull(repository.getUserByUsername("user1"));
+    }
+
+     @Test
+    public void shouldReturnFalseWhenRemovingNonExistentUser() { //TODO #4
+        UserRepository repository = new UserRepository(List.of());
+        assertFalse(repository.removeUser("nonexistent"));
+    }
 }
