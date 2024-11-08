@@ -85,4 +85,15 @@ public class UserRepositoryTest {
         UserRepository repository = new UserRepository(List.of());
         assertNull(repository.getUserByEmail("nonexistent@example.com"));
     }
+
+    @Test
+    public void shouldNotAddUserWithDuplicateEmail() {
+        UserRepository repository = new UserRepository(List.of());
+
+        User user1 = new User("user1", "password1", "user@example.com");
+        User user2 = new User("user2", "password2", "user@example.com");
+
+        assertTrue(repository.addUser(user1));
+        assertFalse(repository.addUser(user2));
+    }
 }
