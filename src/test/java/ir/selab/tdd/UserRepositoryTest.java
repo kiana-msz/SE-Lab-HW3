@@ -71,4 +71,18 @@ public class UserRepositoryTest {
         assertEquals(user1, repository.getUserByEmail("user1@example.com"));
         assertEquals(user2, repository.getUserByEmail("user2@example.com"));
     }
+
+    @Test
+    public void shouldReturnUserByEmail() {
+        User user = new User("user1", "password1", "user1@example.com");
+        UserRepository repository = new UserRepository(List.of(user));
+
+        assertEquals(user, repository.getUserByEmail("user1@example.com"));
+    }
+
+    @Test
+    public void shouldReturnNullIfEmailNotFound() {
+        UserRepository repository = new UserRepository(List.of());
+        assertNull(repository.getUserByEmail("nonexistent@example.com"));
+    }
 }
