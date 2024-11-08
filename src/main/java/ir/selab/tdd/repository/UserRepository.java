@@ -52,6 +52,11 @@ public class UserRepository {
 
     public boolean removeUser(String username) {
         // TODO: implement
+        User removedUser = usersByUserName.remove(username);
+        if (removedUser != null && removedUser.getEmail() != null) {
+            usersByEmail.remove(removedUser.getEmail());
+            return true;
+        }
         return false;
     }
 
