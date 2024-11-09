@@ -48,6 +48,8 @@ public class UserRepository {
         if (user.getEmail() != null) {
             usersByEmail.put(user.getEmail(), user);
         }
+
+        return true;
     }
 
     public boolean removeUser(String username) {

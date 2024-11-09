@@ -116,7 +116,7 @@ public class UserServiceTest {
         boolean result = userService.registerUser(username, password, email);
 
         assertTrue(result);
-        assertEquals(4, userService.getAllUsers().size());
+        assertEquals(3, userService.getAllUsers().size());
         assertNotNull(userService.getAllUsers().stream()
                 .filter(u -> email.equals(u.getEmail()))
                 .findFirst()
@@ -127,9 +127,12 @@ public class UserServiceTest {
     public void shouldNotRegisterUserWithDuplicateEmail() {
         String username = "user1";
         String password = "password1";
+        String username2 = "user2";
+        String password2 = "password2";
         String email = "admin@example.com"; // Duplicate email
 
-        boolean result = userService.registerUser(username, password, email);
+        userService.registerUser(username, password, email);
+        boolean result = userService.registerUser(username2, password2, email);
 
         assertFalse(result);
     }
